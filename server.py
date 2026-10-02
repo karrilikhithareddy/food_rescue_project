@@ -1,11 +1,13 @@
 from flask import Flask, render_template, request, redirect, session, url_for, flash
 import sqlite3
+import os
 from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
 
 app = Flask(__name__)
 app.secret_key = "foodrescue_secret_key_change_me"
-DB = "foodrescue.db"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB = os.path.join(BASE_DIR, "foodrescue.db")
 
 def get_db():
     conn = sqlite3.connect(DB)
