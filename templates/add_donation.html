@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-box wide">
+<h2>🍱 Add Food Donation</h2><p class="muted">Share details of safe, edible surplus food.</p>
+<form method="POST">
+<div class="two">
+<div><label>Food Name</label><input name="food_name" placeholder="e.g. Veg Rice" required></div>
+<div><label>Food Type</label>
+<select name="food_type"><option>Meals</option><option>Snacks</option><option>Bakery</option><option>Fruits</option><option>Other</option></select></div>
+</div>
+<div class="two">
+<div><label>Quantity (packets/servings)</label><input type="number" name="quantity" min="1" required></div>
+<div><label>Available Until</label><input type="time" name="available_time" required></div>
+</div>
+<label>Pickup Location</label><input name="pickup_location" placeholder="Area / address" required>
+<label>Description</label><textarea name="description" placeholder="Freshly prepared, packed, etc."></textarea>
+<button class="btn" type="submit">Post Donation</button>
+</form>
+</div>
+{% endblock %}

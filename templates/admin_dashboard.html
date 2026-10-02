@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-head"><div><span class="tag">ADMIN</span><h1>FoodRescue Overview</h1></div></div>
+<div class="stats">
+<div><b>{{ donations|length }}</b><span>Total Donations</span></div>
+<div><b>{{ requests|length }}</b><span>Pickup Requests</span></div>
+<div><b>{{ donations|selectattr('status','equalto','Completed')|list|length }}</b><span>Completed</span></div>
+</div>
+<h2>Recent Donations</h2>
+<div class="table-wrap"><table><tr><th>Food</th><th>Donor</th><th>Qty</th><th>Location</th><th>Status</th></tr>
+{% for d in donations %}<tr><td>{{ d.food_name }}</td><td>{{ d.donor_name }}</td><td>{{ d.quantity }}</td><td>{{ d.pickup_location }}</td><td>{{ d.status }}</td></tr>{% endfor %}
+</table></div>
+<h2 class="section-title">Requests</h2>
+<div class="table-wrap"><table><tr><th>Food</th><th>Volunteer</th><th>Status</th><th>Action</th></tr>
+{% for r in requests %}<tr><td>{{ r.food_name }}</td><td>{{ r.volunteer_name }}</td><td>{{ r.status }}</td><td>
+{% if r.status == 'Requested' %}<form method="POST" action="{{ url_for('update_request', request_id=r.id, status='Accepted') }}"><button class="small-btn">Accept</button></form>
+{% elif r.status == 'Picked Up' %}<span>In progress</span>{% else %}<span>—</span>{% endif %}
+</td></tr>{% endfor %}</table></div>
+{% endblock %}

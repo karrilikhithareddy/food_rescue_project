@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+    <div>
+        <span class="tag">REAL-WORLD FOOD WASTE SOLUTION</span>
+        <h1>Turn Extra Food Into<br><span>Extra Hope.</span></h1>
+        <p>FoodRescue connects food donors with volunteers so safe, edible surplus food can reach people who need it instead of being wasted.</p>
+        <div class="actions">
+            <a class="btn" href="{{ url_for('register') }}">Start Donating 🍱</a>
+            <a class="btn secondary" href="{{ url_for('login') }}">Find Donations</a>
+        </div>
+    </div>
+    <div class="hero-card">
+        <div class="big-icon">🍲</div>
+        <h3>Every meal matters.</h3>
+        <p>Post surplus food, connect with a volunteer, and track the donation.</p>
+    </div>
+</section>
+
+<section class="stats">
+    <div><b>{{ total }}</b><span>Total Donations</span></div>
+    <div><b>{{ available }}</b><span>Available Now</span></div>
+    <div><b>{{ completed }}</b><span>Completed</span></div>
+</section>
+
+<section class="info">
+    <h2>How FoodRescue Works</h2>
+    <div class="grid three">
+        <div class="card"><div class="icon">🍽️</div><h3>1. Donate</h3><p>Donors post safe surplus food with quantity and pickup details.</p></div>
+        <div class="card"><div class="icon">🤝</div><h3>2. Connect</h3><p>Volunteers discover available donations and send a pickup request.</p></div>
+        <div class="card"><div class="icon">🌱</div><h3>3. Rescue</h3><p>Food is picked up and the donation status is updated until completion.</p></div>
+    </div>
+</section>
+{% endblock %}

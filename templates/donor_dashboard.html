@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-head"><div><span class="tag">DONOR DASHBOARD</span><h1>My Donations</h1></div><a class="btn" href="{{ url_for('add_donation') }}">+ Add Donation</a></div>
+{% if donations %}
+<div class="grid">
+{% for d in donations %}
+<div class="card donation">
+<div class="row"><span class="food-icon">🍲</span><span class="status">{{ d.status }}</span></div>
+<h3>{{ d.food_name }}</h3><p>{{ d.food_type }} • {{ d.quantity }} servings</p>
+<p>📍 {{ d.pickup_location }}</p><p>⏰ Until {{ d.available_time }}</p>
+{% if d.description %}<p class="muted">{{ d.description }}</p>{% endif %}
+<a class="small-btn" href="{{ url_for('edit_donation', donation_id=d.id) }}">✏️ Edit Donation</a>
+</div>
+{% endfor %}
+</div>
+{% else %}
+<div class="empty">No donations yet. Add your first donation! 🍱</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-box">
+<h2>Create Account</h2><p class="muted">Join FoodRescue and help reduce food waste.</p>
+<form method="POST">
+<label>Full Name</label><input name="fullname" required>
+<label>Email</label><input type="email" name="email" required>
+<label>Password</label><input type="password" name="password" minlength="6" required>
+<label>Role</label>
+<select name="role">
+<option value="donor">Food Donor</option>
+<option value="volunteer">Volunteer / NGO</option>
+</select>
+<button class="btn" type="submit">Create Account</button>
+</form>
+</div>
+{% endblock %}

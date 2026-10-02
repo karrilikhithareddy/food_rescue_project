@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-box">
+<h2>Welcome Back 👋</h2><p class="muted">Login to continue to FoodRescue.</p>
+<form method="POST">
+<label>Email</label><input type="email" name="email" required>
+<label>Password</label><input type="password" name="password" required>
+<button class="btn" type="submit">Login</button>
+</form>
+</div>
+{% endblock %}

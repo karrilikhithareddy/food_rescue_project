@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-box wide">
+<h2>✏️ Edit Food Donation</h2>
+<p class="muted">Update your food donation details.</p>
+<form method="POST">
+<div class="two">
+<div>
+<label>Food Name</label>
+<input name="food_name" value="{{ donation.food_name }}" required>
+</div>
+<div>
+<label>Food Type</label>
+<select name="food_type">
+{% for item in ["Meals","Snacks","Bakery","Fruits","Other"] %}
+<option {% if donation.food_type == item %}selected{% endif %}>{{ item }}</option>
+{% endfor %}
+</select>
+</div>
+</div>
+
+<div class="two">
+<div>
+<label>Quantity (packets/servings)</label>
+<input type="number" name="quantity" min="1" value="{{ donation.quantity }}" required>
+</div>
+<div>
+<label>Available Until</label>
+<input type="time" name="available_time" value="{{ donation.available_time }}" required>
+</div>
+</div>
+
+<label>Pickup Location</label>
+<input name="pickup_location" value="{{ donation.pickup_location }}" required>
+
+<label>Description</label>
+<textarea name="description">{{ donation.description or "" }}</textarea>
+
+<button class="btn" type="submit">Save Changes</button>
+<a class="btn secondary" href="{{ url_for('dashboard') }}">Cancel</a>
+</form>
+</div>
+{% endblock %}
